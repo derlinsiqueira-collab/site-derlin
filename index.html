@@ -231,6 +231,20 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{ou
 .calc .res span{font-size:.88rem;color:var(--muted)}
 .calc .aviso-calc{font-size:.8rem;color:var(--muted)}
 @media (max-width:760px){.calc{grid-template-columns:1fr}.calc form{border-right:0;border-bottom:1px solid var(--line)}}
+/* chamadas e conversa */
+.chamada-sec{padding-block:8px 8px}
+.chamada{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;background:var(--blue-soft);border-radius:12px;padding:22px 26px}
+.chamada>div{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 320px}
+.chamada p{color:var(--text);font-size:.95rem}
+.conversa{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
+.passos-conversa{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-left:2px solid var(--line)}
+.passos-conversa li{padding:0 0 22px 22px;position:relative;display:flex;flex-direction:column;gap:4px}
+.passos-conversa li::before{content:"";position:absolute;left:-7px;top:.35em;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.passos-conversa li:last-child{padding-bottom:0}
+.passos-conversa b{color:var(--ink);font-weight:650}
+.passos-conversa span{color:var(--text)}
+.btn.wa{justify-content:center;border-radius:10px 10px 0 0;padding-block:16px;font-size:1rem}
+@media (max-width:860px){.conversa{grid-template-columns:1fr}}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -249,7 +263,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a href="#servicos">Serviços</a>
       <a href="#palestras">Palestras</a>
     </nav>
-    <a class="btn cheio top-cta" href="#contato">Falar comigo</a>
+    <a class="btn cheio top-cta" href="#conversa">15 min grátis</a>
   </div>
 </header>
 
@@ -262,7 +276,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <h1>Eu coloco a IA para trabalhar <em>dentro</em> do seu time comercial.</h1>
           <p class="lead">Mapeio o processo de vendas, conecto a IA ao CRM, ao e-mail, à agenda e ao WhatsApp, e deixo a rotina rodando sozinha. O vendedor volta a fazer o que gera receita: conversar com cliente.</p>
           <div class="acoes">
-            <a class="btn cheio" href="#contato">Agendar um diagnóstico</a>
+            <a class="btn cheio" href="#conversa">Conversa grátis de 15 min</a>
             <a class="btn" href="#caso">Ver a operação que eu automatizei</a>
           </div>
           <div class="creds"><span><b>17 anos</b> em vendas B2B</span><span><b>30 rotinas</b> de IA em produção</span><span><b>MBA</b> USP/ESALQ e Trevisan</span></div>
@@ -425,6 +439,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
+
+  <section class="chamada-sec">
+    <div class="wrap">
+      <div class="chamada"><div><h3>Quer saber quais tarefas do seu time a IA assume primeiro?</h3><p>Em 15 minutos eu olho o seu funil e aponto por onde começar. Sem proposta e sem compromisso.</p></div><a class="btn cheio" href="#conversa">Conversa grátis de 15 min</a></div>
+    </div>
+  </section>
+
   <section id="caso" class="faixa">
     <div class="wrap">
       <div class="caso">
@@ -481,12 +502,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
+
+  <section class="chamada-sec">
+    <div class="wrap">
+      <div class="chamada"><div><h3>Quer fazer essa conta com os números reais do seu time?</h3><p>A conversa de 15 minutos sai com uma estimativa de horas para a sua operação.</p></div><a class="btn cheio" href="#conversa">Conversa grátis de 15 min</a></div>
+    </div>
+  </section>
+
   <section id="servicos">
     <div class="wrap">
       <div class="sec-head">
         <span class="label"><b>08</b> · Serviços</span>
         <h2>Quatro formas de começar.</h2>
-        <p>Do diagnóstico fechado ao acompanhamento mensal. O escopo e o investimento saem do diagnóstico.</p>
+        <p>Tudo começa com a conversa grátis de 15 minutos. Depois, do diagnóstico fechado ao acompanhamento mensal; o escopo e o investimento saem do diagnóstico.</p>
       </div>
       <div class="ofertas">
         <div class="oferta destaque"><span class="dur">2 semanas · preço fechado</span><h3>Diagnóstico de IA comercial</h3><ul><li>Mapa do funil e das tarefas do time</li><li>Horas gastas por tarefa</li><li>Lista de automações por retorno</li></ul><p class="entrega">Entrega: relatório com plano de 90 dias.</p></div>
@@ -522,6 +550,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <h2>Antes de começar.</h2>
       </div>
       <div class="faq">
+        <details><summary>A conversa de 15 minutos é mesmo grátis?</summary><p>Sim. Ela serve para você entender por onde a IA entra no seu time. Se fizer sentido seguir, o próximo passo é o diagnóstico, com preço fechado.</p></details>
         <details><summary>Preciso trocar meu CRM?</summary><p>Não. Eu trabalho em cima do que o time já usa. HubSpot e Pipedrive são os mais comuns; outros entram no diagnóstico.</p></details>
         <details><summary>E a segurança dos dados dos meus clientes?</summary><p>Cada automação tem permissão mínima, registro do que fez e regra clara do que precisa de aprovação humana. Nada sai para cliente sem o ok de alguém do time quando a regra pede.</p></details>
         <details><summary>Em quanto tempo vejo resultado?</summary><p>O piloto já mede o antes e depois em 2 a 3 semanas. A operação completa leva de 6 a 10 semanas, conforme o tamanho do time.</p></details>
@@ -531,17 +560,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section id="contato" style="background:var(--sheet);border-top:1px solid var(--line)">
+  <section id="conversa" style="background:var(--sheet);border-top:1px solid var(--line)">
     <div class="wrap">
-      <div class="contato">
-        <div class="txt">
-          <span class="label"><b>11</b> · Contato</span>
-          <h2>Vamos medir quanto tempo o seu time pode ganhar.</h2>
-          <p>Uma conversa de 30 minutos para entender o seu funil. Se fizer sentido, a gente parte para o diagnóstico.</p>
-        </div>
+      <div class="sec-head">
+        <span class="label"><b>11</b> · Contato</span>
+        <h2>Conversa grátis de 15 minutos.</h2>
+        <p>Uma conversa rápida para olhar o seu funil. Você sai sabendo por onde a IA entra no seu time, mesmo que a gente não trabalhe junto.</p>
+      </div>
+      <div class="conversa">
+        <ol class="passos-conversa">
+          <li><b>Minutos 1 a 5</b><span>Você me conta como o time vende hoje: tamanho, CRM, canais e onde o tempo vai embora.</span></li>
+          <li><b>Minutos 5 a 12</b><span>Eu aponto 2 ou 3 tarefas que a IA pode assumir primeiro, com exemplos que já rodam na minha operação.</span></li>
+          <li><b>Minutos 12 a 15</b><span>Você sai com uma estimativa de horas por mês e o próximo passo. Sem proposta empurrada.</span></li>
+        </ol>
         <div class="canais">
-          <div class="canal"><span class="label">E-mail</span><span class="v" id="c-email">derlinsiq@gmail.com</span><button class="copiar" type="button" data-alvo="c-email">copiar</button></div>
+          <a class="btn cheio wa" href="https://wa.me/5511964272554?text=Ol%C3%A1%2C%20Derlin!%20Vi%20seu%20site%20e%20quero%20marcar%20a%20conversa%20gr%C3%A1tis%20de%2015%20minutos%20sobre%20IA%20no%20meu%20time%20comercial." target="_blank" rel="noopener">Marcar pelo WhatsApp</a>
           <div class="canal"><span class="label">WhatsApp e telefone</span><span class="v" id="c-tel">(11) 96427-2554</span><button class="copiar" type="button" data-alvo="c-tel">copiar</button></div>
+          <div class="canal"><span class="label">E-mail</span><span class="v" id="c-email">derlinsiq@gmail.com</span><button class="copiar" type="button" data-alvo="c-email">copiar</button></div>
           <div class="canal"><span class="label">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/derlinsiqueira/" target="_blank" rel="noopener">linkedin.com/in/derlinsiqueira</a></div>
         </div>
       </div>
