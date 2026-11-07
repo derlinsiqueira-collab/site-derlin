@@ -64,7 +64,9 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{ou
 
 /* hero */
 .hero{padding-block:56px 40px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:center}
+.hero-txt{max-width:720px}
+.hero{padding-block:88px 48px}
 .hero-txt{display:flex;flex-direction:column;gap:22px;min-width:0}
 .hero-txt h1 em{font-style:normal;color:var(--blue)}
 .hero-txt .lead{font-size:1.15rem;color:var(--text)}
@@ -350,7 +352,7 @@ body{position:relative}
 /* curiosidades ao passar o mouse (só em telas com mouse) */
 @media (hover:hover) and (min-width:900px){
   .astro{pointer-events:auto;cursor:help;z-index:2}
-  .sol{top:-360px;right:-240px}
+  .sol{top:70px;right:-150px;width:620px}
   .planeta{transition:opacity .25s,filter .25s}
   .planeta:hover{opacity:1;filter:brightness(1.15)}
 }
@@ -362,7 +364,7 @@ body{position:relative}
 @keyframes flutua{0%,100%{translate:0 0}50%{translate:0 -10px}}
 .planeta{animation:flutua 9s ease-in-out infinite}
 .planeta:nth-child(odd){animation-duration:11s}
-@media (max-width:760px){.planeta{opacity:.8;scale:1}.sol{width:440px;top:-230px;right:-180px;opacity:.5}}
+@media (max-width:760px){.planeta{opacity:.85;scale:1}.mercurio{width:56px}.venus{width:72px}.terra{width:82px}.marte{width:64px}.jupiter{width:96px}.saturno{width:150px}.urano{width:80px}.netuno{width:76px}.sol{width:440px;top:-230px;right:-180px;opacity:.5}}
 @media (prefers-reduced-motion:reduce){.planeta{animation:none}}
 /* funil antes x depois */
 .funil-topo{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin-bottom:14px}
@@ -383,6 +385,43 @@ body{position:relative}
 .funil-lista .papel{font-size:.78rem;font-weight:600}
 .funil-lista .tempo{display:block;font-size:.82rem;color:var(--text);margin-top:2px}
 @media (max-width:760px){.comparativo{grid-template-columns:1fr 1fr}}
+/* ===== cena: foguete x buraco negro ===== */
+.cena-sec{padding-block:40px 24px}
+.cena{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:center;border:1px solid var(--line);border-radius:24px;background:radial-gradient(600px 300px at 25% 50%,rgba(233,181,90,.10),transparent 70%),rgba(255,255,255,.02);padding:28px;overflow:hidden}
+.cena-txt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cena-txt .btn{align-self:flex-start}
+.cena-palco{position:relative;height:340px;min-width:0}
+.bn{position:absolute;left:30%;top:52%;width:250px;height:250px;transform:translate(-50%,-50%);perspective:600px}
+.bn-disco{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(233,181,90,0),rgba(255,214,140,.95),rgba(255,247,225,1),rgba(233,140,60,.9),rgba(233,181,90,0) 45%,rgba(110,168,255,.45) 70%,rgba(233,181,90,0));filter:blur(5px);transform:rotateX(74deg);animation:disco 5s linear infinite}
+.bn-disco.frente{clip-path:inset(50% 0 0 0)}
+@keyframes disco{to{transform:rotateX(74deg) rotateZ(360deg)}}
+.bn-anel{position:absolute;inset:22%;border-radius:50%;box-shadow:0 0 0 3px rgba(255,226,170,.9),0 0 30px 8px rgba(233,181,90,.55),0 0 80px 30px rgba(233,140,60,.18)}
+.bn-nucleo{position:absolute;inset:25%;border-radius:50%;background:radial-gradient(circle,#000 62%,#050505 100%)}
+.puxao{position:absolute;left:30%;top:52%;width:46%;height:2px;transform-origin:0 50%;transform:rotate(-14deg);background:repeating-linear-gradient(90deg,rgba(160,190,255,.5) 0 8px,transparent 8px 16px);animation:puxa 1.2s linear infinite;opacity:.7}
+@keyframes puxa{from{background-position:0 0}to{background-position:-32px 0}}
+.foguete{position:absolute;left:72%;top:22%;transform-origin:30% 50%;animation:luta 4s ease-in-out infinite;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.foguete svg{display:block;transform:rotate(-14deg)}
+.chama{transform-origin:30px 30px;animation:chama .18s ease-in-out infinite alternate}
+@keyframes chama{from{transform:scaleX(.75)}to{transform:scaleX(1.15)}}
+@keyframes luta{0%,100%{translate:0 0;rotate:0deg}25%{translate:-22px 10px;rotate:-4deg}50%{translate:-8px 4px;rotate:3deg}75%{translate:-30px 14px;rotate:-6deg}}
+.poeira i{position:absolute;left:var(--x);top:var(--y);width:3px;height:3px;border-radius:50%;background:#FFE3A8;opacity:0;animation:sugado 3.2s linear infinite;animation-delay:var(--d)}
+.poeira i:nth-child(1){--x:88%;--y:18%;--d:0s}.poeira i:nth-child(2){--x:80%;--y:72%;--d:.4s}.poeira i:nth-child(3){--x:62%;--y:12%;--d:.8s}.poeira i:nth-child(4){--x:94%;--y:46%;--d:1.2s}
+.poeira i:nth-child(5){--x:70%;--y:86%;--d:1.6s}.poeira i:nth-child(6){--x:56%;--y:30%;--d:2s}.poeira i:nth-child(7){--x:84%;--y:60%;--d:2.4s}.poeira i:nth-child(8){--x:66%;--y:56%;--d:2.8s}
+@keyframes sugado{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}100%{opacity:0;transform:translate(calc((30% - var(--x)) * 4),calc((52% - var(--y)) * 3)) scale(.3)}}
+.rotulo{position:absolute;display:flex;align-items:flex-start;gap:4px;color:var(--text);font-size:.82rem;font-weight:600}
+.rotulo span{background:rgba(5,11,26,.75);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+.rot-foguete{right:2%;top:2%;color:#C9DAFF}
+.rot-foguete svg{margin-top:12px}
+.rot-mercado{left:4%;bottom:4%;align-items:flex-end;color:var(--ocre)}
+.rot-mercado svg{margin-bottom:14px;order:-1}
+@media (max-width:860px){.cena{grid-template-columns:1fr;padding:18px}.cena-palco{height:280px}.bn{width:190px;height:190px;left:32%}.foguete{left:62%;top:18%}.foguete svg{width:110px;height:55px}.rot-foguete{right:0;top:0}.rot-foguete svg{display:none}.rot-mercado{left:0;bottom:0}}
+@media (prefers-reduced-motion:reduce){.bn-disco,.puxao,.foguete,.chama,.poeira i{animation:none}}
+/* foto dentro de Quem sou */
+.traj-foto{grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr) minmax(0,1.1fr);gap:36px}
+.retrato-sobre{align-self:start}
+.retrato-sobre figure{max-width:340px}
+@media (max-width:1080px){.traj-foto{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.traj-foto .marcos{grid-column:1/-1}}
+@media (max-width:860px){.traj-foto{grid-template-columns:1fr}.retrato-sobre figure{max-width:300px;margin-inline:auto}}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -391,7 +430,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 
 <canvas id="ceu" aria-hidden="true"></canvas>
-<div class="cosmos" id="cosmos" aria-hidden="true"><div class="sol astro" data-nome="Sol" data-fato="Uma estrela de 4,6 bilhões de anos. Caberiam cerca de 1,3 milhão de Terras dentro dele." data-fonte="Foto do satélite SDO (NASA), 2010"><img src="astros/sol.jpg" alt=""></div><div class="planeta astro mercurio" data-nome="Mercúrio" data-fato="O planeta mais próximo do Sol. Um ano lá dura só 88 dias." data-fonte="Foto da sonda MESSENGER (NASA/JHUAPL)" data-secao="para-quem" data-lado="dir"><img src="astros/mercurio.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro venus" data-nome="Vênus" data-fato="O planeta mais quente do sistema solar, perto de 465 °C. E gira ao contrário dos outros." data-fonte="Foto da sonda Mariner 10 (NASA)" data-secao="problema" data-lado="esq"><img src="astros/venus.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro terra" data-nome="Terra" data-fato="A famosa &quot;Bolinha Azul&quot;, fotografada pela tripulação da Apollo 17 em dezembro de 1972." data-fonte="Foto da missão Apollo 17 (NASA)" data-secao="metodo" data-lado="dir"><img src="astros/terra.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro marte" data-nome="Marte" data-fato="No centro aparece o Valles Marineris, um cânion de cerca de 4.000 km de comprimento." data-fonte="Mosaico das sondas Viking (NASA/USGS)" data-secao="o-que-automatizo" data-lado="esq"><img src="astros/marte.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro jupiter" data-nome="Júpiter" data-fato="O maior planeta. A Grande Mancha Vermelha é uma tempestade maior que a Terra." data-fonte="Foto do telescópio Hubble (NASA/ESA), 2014" data-secao="caso" data-lado="dir"><img src="astros/jupiter.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro saturno" data-nome="Saturno" data-fato="Os anéis têm cerca de 280 mil km de diâmetro, mas em muitos pontos só uns 10 metros de espessura." data-fonte="Foto da sonda Cassini (NASA/JPL/SSI), 2009" data-secao="calculadora" data-lado="esq"><img src="astros/saturno.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro urano" data-nome="Urano" data-fato="Gira &quot;deitado&quot;: o eixo é inclinado cerca de 98 graus." data-fonte="Foto da sonda Voyager 2 (NASA), 1986" data-secao="servicos" data-lado="dir"><img src="astros/urano.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro netuno" data-nome="Netuno" data-fato="Tem os ventos mais rápidos do sistema solar, acima de 2.000 km/h." data-fonte="Foto da sonda Voyager 2 (NASA), 1989" data-secao="perguntas" data-lado="esq"><img src="astros/netuno.jpg" alt="" loading="lazy" decoding="async"></div></div>
+<div class="cosmos" id="cosmos" aria-hidden="true"><div class="sol astro" data-nome="Sol" data-fato="Uma estrela de 4,6 bilhões de anos. Caberiam cerca de 1,3 milhão de Terras dentro dele." data-fonte="Foto do satélite SDO (NASA), 2010"><img src="astros/sol.jpg" alt=""></div><div class="planeta astro mercurio" data-nome="Mercúrio" data-fato="O planeta mais próximo do Sol. Um ano lá dura só 88 dias." data-fonte="Foto da sonda MESSENGER (NASA/JHUAPL)" data-secao="para-quem" data-lado="dir"><img src="astros/mercurio.jpg" alt="" decoding="async"></div><div class="planeta astro venus" data-nome="Vênus" data-fato="O planeta mais quente do sistema solar, perto de 465 °C. E gira ao contrário dos outros." data-fonte="Foto da sonda Mariner 10 (NASA)" data-secao="problema" data-lado="esq"><img src="astros/venus.jpg" alt="" decoding="async"></div><div class="planeta astro terra" data-nome="Terra" data-fato="A famosa &quot;Bolinha Azul&quot;, fotografada pela tripulação da Apollo 17 em dezembro de 1972." data-fonte="Foto da missão Apollo 17 (NASA)" data-secao="metodo" data-lado="dir"><img src="astros/terra.jpg" alt="" decoding="async"></div><div class="planeta astro marte" data-nome="Marte" data-fato="No centro aparece o Valles Marineris, um cânion de cerca de 4.000 km de comprimento." data-fonte="Mosaico das sondas Viking (NASA/USGS)" data-secao="o-que-automatizo" data-lado="esq"><img src="astros/marte.jpg" alt="" decoding="async"></div><div class="planeta astro jupiter" data-nome="Júpiter" data-fato="O maior planeta. A Grande Mancha Vermelha é uma tempestade maior que a Terra." data-fonte="Foto do telescópio Hubble (NASA/ESA), 2014" data-secao="caso" data-lado="dir"><img src="astros/jupiter.jpg" alt="" decoding="async"></div><div class="planeta astro saturno" data-nome="Saturno" data-fato="Os anéis têm cerca de 280 mil km de diâmetro, mas em muitos pontos só uns 10 metros de espessura." data-fonte="Foto da sonda Cassini (NASA/JPL/SSI), 2009" data-secao="calculadora" data-lado="esq"><img src="astros/saturno.jpg" alt="" decoding="async"></div><div class="planeta astro urano" data-nome="Urano" data-fato="Gira &quot;deitado&quot;: o eixo é inclinado cerca de 98 graus." data-fonte="Foto da sonda Voyager 2 (NASA), 1986" data-secao="servicos" data-lado="dir"><img src="astros/urano.jpg" alt="" decoding="async"></div><div class="planeta astro netuno" data-nome="Netuno" data-fato="Tem os ventos mais rápidos do sistema solar, acima de 2.000 km/h." data-fonte="Foto da sonda Voyager 2 (NASA), 1989" data-secao="perguntas" data-secao-mob="sobre" data-lado="esq"><img src="astros/netuno.jpg" alt="" decoding="async"></div></div>
 <div class="dica-astro" id="dica-astro" role="tooltip" hidden><b></b><span></span><small></small></div>
 <header class="top">
   <div class="wrap">
@@ -417,17 +456,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             <a class="btn" href="#caso">Ver a operação que eu automatizei</a>
           </div>
           <div class="creds"><span><b>17 anos</b> em vendas B2B</span><span><b>30 rotinas</b> de IA em produção</span><span><b>MBA</b> USP/ESALQ e Trevisan</span></div>
-        </div>
-        <div class="retrato">
-          <figure>
-            <img src="foto.jpg" alt="Derlin Siqueira">
-            <div class="carimbo" aria-label="Ficha">
-              <div><span>Nome</span>Derlin Siqueira</div>
-              <div><span>Base</span>São Paulo, SP</div>
-              <div><span>Carreira</span>17 anos · indústria, M&amp;A, SaaS</div>
-              <div><span>Foco</span>IA no time comercial</div>
-            </div>
-          </figure>
         </div>
       </div>
 
@@ -628,7 +656,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <details class="sobre-det" id="sobre-det">
         <summary><span class="sobre-foto" aria-hidden="true"></span><span class="sobre-txt"><b>Conheça quem está por trás</b><span>17 anos entre a fábrica, o M&amp;A e o SaaS. Jornada completa e palestras.</span></span><span class="sobre-mais" aria-hidden="true"></span></summary>
         <div class="sobre-corpo">
-      <div class="traj">
+      <div class="traj traj-foto">
+        <div class="retrato retrato-sobre">
+          <figure>
+            <img src="foto.jpg" alt="Derlin Siqueira">
+            <div class="carimbo" aria-label="Ficha">
+              <div><span>Nome</span>Derlin Siqueira</div>
+              <div><span>Base</span>São Paulo, SP</div>
+              <div><span>Carreira</span>17 anos · indústria, M&amp;A, SaaS</div>
+              <div><span>Foco</span>IA no time comercial</div>
+            </div>
+          </figure>
+        </div>
         <div class="txt">
           <span class="label">Quem sou</span>
           <h2>Da fábrica ao algoritmo: entendo a empresa por dentro antes de automatizar.</h2>
@@ -683,6 +722,46 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <details><summary>Em quanto tempo vejo resultado?</summary><p>O piloto já mede o antes e depois em 2 a 3 semanas. A operação completa leva de 6 a 10 semanas, conforme o tamanho do time.</p></details>
         <details><summary>Meu time não é técnico. Funciona?</summary><p>Funciona. O meu time também não é. A IA trabalha nos bastidores e o vendedor recebe a tarefa pronta: quem ligar, o que dizer, o que registrar.</p></details>
         <details><summary>Vocês fazem palestra em evento interno?</summary><p>Sim. Convenções de vendas, encontros de associação, turmas de MBA e eventos de e-commerce. A palestra tem demonstração ao vivo.</p></details>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="cena-sec" aria-labelledby="cena-t">
+    <div class="wrap">
+      <div class="cena">
+        <div class="cena-palco" aria-hidden="true">
+          <div class="poeira"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="bn">
+            <div class="bn-disco"></div>
+            <div class="bn-anel"></div>
+            <div class="bn-nucleo"></div>
+            <div class="bn-disco frente"></div>
+          </div>
+          <div class="puxao"></div>
+          <div class="foguete">
+            <svg viewBox="0 0 120 60" width="150" height="75">
+              <defs>
+                <linearGradient id="fog-corpo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F7FF"/><stop offset="1" stop-color="#B9C6E0"/></linearGradient>
+                <linearGradient id="fog-chama" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".4" stop-color="#F2A23A"/><stop offset="1" stop-color="rgba(242,100,40,0)"/></linearGradient>
+              </defs>
+              <path class="chama" d="M30 22 L2 30 L30 38 Z" fill="url(#fog-chama)"/>
+              <path d="M30 18 L84 18 Q108 22 116 30 Q108 38 84 42 L30 42 Z" fill="url(#fog-corpo)"/>
+              <path d="M84 18 Q108 22 116 30 Q108 38 84 42 Z" fill="#E9B55A"/>
+              <circle cx="72" cy="30" r="6" fill="#13294B" stroke="#6EA8FF" stroke-width="2"/>
+              <path d="M36 18 L26 6 L48 18 Z" fill="#6EA8FF"/>
+              <path d="M36 42 L26 54 L48 42 Z" fill="#6EA8FF"/>
+            </svg>
+          </div>
+          <div class="rotulo rot-foguete"><span>Sua operação comercial sem IA</span><svg viewBox="0 0 60 40" width="60" height="40"><path d="M4 4 C30 6 46 18 54 34" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M48 32 L54 36 L56 28" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+          <div class="rotulo rot-mercado"><svg viewBox="0 0 60 40" width="60" height="40"><path d="M56 36 C30 34 14 22 6 6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 12 L6 4 L12 10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>O mercado</span></div>
+        </div>
+        <div class="cena-txt">
+          <span class="label">Enquanto isso, no mercado</span>
+          <h2 id="cena-t">Sem IA, o mercado puxa a sua operação para trás.</h2>
+          <p>Enquanto o seu time prospecta, registra e cobra na mão, o concorrente com IA já respondeu, já registrou e já mandou a proposta. Dá para escapar dessa gravidade, e começa com uma conversa.</p>
+          <a class="btn cheio" href="https://wa.me/5511964272554?text=Ol%C3%A1%2C%20Derlin!%20Vi%20seu%20site%20e%20quero%20marcar%20a%20conversa%20gr%C3%A1tis%20de%2015%20minutos%20sobre%20IA%20no%20meu%20time%20comercial." target="_blank" rel="noopener">Conversa grátis de 15 min</a>
+        </div>
       </div>
     </div>
   </section>
@@ -776,18 +855,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     cos.style.height=document.documentElement.scrollHeight+'px';
     var larg=document.documentElement.clientWidth, col=Math.min(1120,larg-32), margem=(larg-col)/2;
     base=ps.map(function(p){
-      var s=document.getElementById(p.dataset.secao); if(!s) return null;
+      var mob=larg<760;
+      var s=document.getElementById(mob&&p.dataset.secaoMob?p.dataset.secaoMob:p.dataset.secao); if(!s) return null;
       var r=s.getBoundingClientRect(), topo=r.top+window.scrollY+Math.min(140,r.height*.25);
-      var w=p.offsetWidth, fora=w*.45, mob=larg<760;
+      var w=p.offsetWidth, fora=w*.45;
+      if(mob){ var pt=parseFloat(getComputedStyle(s).paddingTop)||0, ant=s.previousElementSibling, pb=ant?(parseFloat(getComputedStyle(ant).paddingBottom)||0):0;
+        topo=r.top+window.scrollY+pt-(pt+pb)/2-p.offsetHeight/2; }
       p.style.top=topo+'px';
-      if(p.dataset.lado==='esq'){p.style.left=(mob?-w*.12:Math.max(margem-24-w,-w*.65))+'px';p.style.right='auto';}
-      else{p.style.right=(mob?-w*.12:Math.max(margem-24-w,-w*.65))+'px';p.style.left='auto';}
+      if(p.dataset.lado==='esq'){p.style.left=(mob?8:Math.max(margem-24-w,-w*.65))+'px';p.style.right='auto';}
+      else{p.style.right=(mob?8:Math.max(margem-24-w,-w*.65))+'px';p.style.left='auto';}
       return topo;
     });
     move();
   }
   function move(){
-    if(quieto) return;
+    if(quieto||document.documentElement.clientWidth<760){ps.forEach(function(p){p.style.transform='';});return;}
     var y=window.scrollY, h=window.innerHeight;
     ps.forEach(function(p,i){ if(base[i]==null) return; var d=(y+h/2-base[i])*-0.12; p.style.transform='translateY('+d.toFixed(1)+'px)'; });
   }
@@ -797,6 +879,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   window.addEventListener('load',arruma);
   var det=document.getElementById('sobre-det'); if(det) det.addEventListener('toggle',arruma);
   if(document.fonts&&document.fonts.ready) document.fonts.ready.then(arruma);
+  ps.forEach(function(p){var im=p.querySelector('img'); if(im&&!im.complete) im.addEventListener('load',arruma);});
   arruma();
 })();
 
