@@ -364,7 +364,7 @@ body{position:relative}
 @keyframes flutua{0%,100%{translate:0 0}50%{translate:0 -10px}}
 .planeta{animation:flutua 9s ease-in-out infinite}
 .planeta:nth-child(odd){animation-duration:11s}
-@media (max-width:760px){.planeta{opacity:.85;scale:1}.mercurio{width:56px}.venus{width:72px}.terra{width:82px}.marte{width:64px}.jupiter{width:96px}.saturno{width:150px}.urano{width:80px}.netuno{width:76px}.sol{width:440px;top:-230px;right:-180px;opacity:.5}}
+@media (max-width:760px){.planeta{opacity:.9;scale:1}.mercurio{width:150px}.venus{width:180px}.terra{width:210px}.marte{width:165px}.jupiter{width:250px}.saturno{width:330px}.urano{width:200px}.netuno{width:190px}.sol{width:440px;top:-230px;right:-180px;opacity:.5}}
 @media (prefers-reduced-motion:reduce){.planeta{animation:none}}
 /* funil antes x depois */
 .funil-topo{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin-bottom:14px}
@@ -862,8 +862,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       if(mob){ var pt=parseFloat(getComputedStyle(s).paddingTop)||0, ant=s.previousElementSibling, pb=ant?(parseFloat(getComputedStyle(ant).paddingBottom)||0):0;
         topo=r.top+window.scrollY+pt-(pt+pb)/2-p.offsetHeight/2; }
       p.style.top=topo+'px';
-      if(p.dataset.lado==='esq'){p.style.left=(mob?8:Math.max(margem-24-w,-w*.65))+'px';p.style.right='auto';}
-      else{p.style.right=(mob?8:Math.max(margem-24-w,-w*.65))+'px';p.style.left='auto';}
+      if(p.dataset.lado==='esq'){p.style.left=(mob?-w*.5:Math.max(margem-24-w,-w*.65))+'px';p.style.right='auto';}
+      else{p.style.right=(mob?-w*.5:Math.max(margem-24-w,-w*.65))+'px';p.style.left='auto';}
       return topo;
     });
     move();
