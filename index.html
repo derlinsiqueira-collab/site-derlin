@@ -262,6 +262,16 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{ou
 .sobre-corpo{padding:8px 22px 26px;border-top:1px solid var(--line)}
 .sobre-corpo .traj{margin-top:20px}
 @media (max-width:520px){.sobre-mais::after{content:"+"}.sobre-det[open] .sobre-mais::after{content:"−"}.sobre-foto{width:44px;height:44px}}
+/* fileira de botões das seções */
+.secoes{position:sticky;top:calc(env(safe-area-inset-top,0px) + 61px);z-index:4;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.secoes .trilho{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.secoes .trilho::-webkit-scrollbar{display:none}
+.secoes a{flex:none;font-size:.84rem;font-weight:500;color:var(--ink);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sheet);white-space:nowrap}
+.secoes a:hover{border-color:var(--blue);color:var(--blue)}
+.secoes a.btn-quem{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.secoes a.btn-quem:hover{background:var(--blue);border-color:var(--blue);color:var(--paper)}
+section[id]{scroll-margin-top:130px}
+@media (min-width:900px){.secoes .trilho{flex-wrap:wrap;overflow:visible}}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -272,17 +282,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <header class="top">
   <div class="wrap">
     <a class="marca" href="#inicio">Derlin Siqueira<small>IA no time comercial</small></a>
-    <nav class="menu" aria-label="Seções">
-      <a href="#sobre">Quem sou</a>
-      <a href="#para-quem">Para quem</a>
-      <a href="#metodo">Método</a>
-      <a href="#caso">Caso</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#palestras">Palestras</a>
-    </nav>
+    
     <a class="btn cheio top-cta" href="#conversa">15 min grátis</a>
   </div>
 </header>
+  <nav class="secoes" aria-label="Seções do site">
+    <div class="wrap"><div class="trilho"><a href="#para-quem">Para quem é</a><a href="#problema">Problema</a><a href="#metodo">Método</a><a href="#o-que-automatizo">O que automatizo</a><a href="#caso">Caso</a><a href="#calculadora">Simulação</a><a href="#servicos">Serviços</a><a href="#palestras">Palestras</a><a href="#sobre" class="btn-quem">Quem sou</a></div></div>
+  </nav>
 
 <main id="inicio">
   <section class="hero">
@@ -380,7 +386,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section style="padding-top:24px">
+  <section id="problema" style="padding-top:24px">
     <div class="wrap">
       <div class="sec-head">
         <span class="label"><b>02</b> · O problema</span>
