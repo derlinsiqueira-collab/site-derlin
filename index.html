@@ -298,7 +298,9 @@ body::before{background:var(--space)}
 .btn.cheio:hover{background:linear-gradient(135deg,#9CC5FF,#6EA8FF)}
 .hero-txt h1 em{background:linear-gradient(120deg,#9CC5FF,#6EA8FF 40%,#E9B55A);-webkit-background-clip:text;background-clip:text;color:transparent}
 .retrato figure{background:transparent;border:0;padding:0;gap:14px}
-.retrato img{border-radius:24px;box-shadow:0 30px 80px -30px rgba(110,168,255,.45),0 0 0 1px var(--line);-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.retrato figure{position:relative}
+.retrato figure::before{content:"";position:absolute;left:8%;right:8%;top:6%;height:70%;border-radius:50%;background:radial-gradient(closest-side,rgba(110,168,255,.35),rgba(110,168,255,.08) 60%,transparent);filter:blur(8px);z-index:0}
+.retrato img{position:relative;z-index:1;border-radius:0;box-shadow:none;-webkit-mask-image:url("foto-mascara.png"),linear-gradient(#000 84%,transparent),linear-gradient(to left,transparent,#000 7%);mask-image:url("foto-mascara.png"),linear-gradient(#000 84%,transparent),linear-gradient(to left,transparent,#000 7%);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-composite:source-in,source-in;mask-composite:intersect}
 .carimbo{border-color:var(--line);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03)}
 .carimbo div{border-color:var(--line)}
 .desenho{background:var(--sheet);border-color:var(--line);border-radius:18px;backdrop-filter:blur(4px)}
