@@ -345,6 +345,18 @@ body{position:relative}
 .planeta.saturno img{-webkit-mask-image:none;mask-image:none}
 .mercurio{width:62px}.venus{width:88px}.terra{width:100px}.marte{width:76px}
 .jupiter{width:230px}.saturno{width:300px}.urano{width:118px}.netuno{width:114px}
+/* curiosidades ao passar o mouse (só em telas com mouse) */
+@media (hover:hover) and (min-width:900px){
+  .astro{pointer-events:auto;cursor:help;z-index:2}
+  .sol{top:-360px;right:-240px}
+  .planeta{transition:opacity .25s,filter .25s}
+  .planeta:hover{opacity:1;filter:brightness(1.15)}
+}
+.dica-astro{position:fixed;z-index:20;max-width:280px;padding:12px 14px;border-radius:14px;background:rgba(8,16,38,.92);border:1px solid rgba(160,190,255,.3);box-shadow:0 18px 40px -12px rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:4px;pointer-events:none}
+.dica-astro[hidden]{display:none}
+.dica-astro b{color:var(--ink);font-size:.98rem}
+.dica-astro span{color:var(--text);font-size:.86rem;line-height:1.45}
+.dica-astro small{color:var(--ocre);font-size:.74rem}
 @keyframes flutua{0%,100%{translate:0 0}50%{translate:0 -10px}}
 .planeta{animation:flutua 9s ease-in-out infinite}
 .planeta:nth-child(odd){animation-duration:11s}
@@ -358,7 +370,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 
 <canvas id="ceu" aria-hidden="true"></canvas>
-<div class="cosmos" id="cosmos" aria-hidden="true"><div class="sol"><img src="astros/sol.jpg" alt=""></div><div class="planeta mercurio" data-secao="para-quem" data-lado="dir"><img src="astros/mercurio.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta venus" data-secao="problema" data-lado="esq"><img src="astros/venus.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta terra" data-secao="metodo" data-lado="dir"><img src="astros/terra.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta marte" data-secao="o-que-automatizo" data-lado="esq"><img src="astros/marte.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta jupiter" data-secao="caso" data-lado="dir"><img src="astros/jupiter.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta saturno" data-secao="calculadora" data-lado="esq"><img src="astros/saturno.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta urano" data-secao="servicos" data-lado="dir"><img src="astros/urano.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta netuno" data-secao="perguntas" data-lado="esq"><img src="astros/netuno.jpg" alt="" loading="lazy" decoding="async"></div></div>
+<div class="cosmos" id="cosmos" aria-hidden="true"><div class="sol astro" data-nome="Sol" data-fato="Uma estrela de 4,6 bilhões de anos. Caberiam cerca de 1,3 milhão de Terras dentro dele." data-fonte="Foto do satélite SDO (NASA), 2010"><img src="astros/sol.jpg" alt=""></div><div class="planeta astro mercurio" data-nome="Mercúrio" data-fato="O planeta mais próximo do Sol. Um ano lá dura só 88 dias." data-fonte="Foto da sonda MESSENGER (NASA/JHUAPL)" data-secao="para-quem" data-lado="dir"><img src="astros/mercurio.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro venus" data-nome="Vênus" data-fato="O planeta mais quente do sistema solar, perto de 465 °C. E gira ao contrário dos outros." data-fonte="Foto da sonda Mariner 10 (NASA)" data-secao="problema" data-lado="esq"><img src="astros/venus.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro terra" data-nome="Terra" data-fato="A famosa &quot;Bolinha Azul&quot;, fotografada pela tripulação da Apollo 17 em dezembro de 1972." data-fonte="Foto da missão Apollo 17 (NASA)" data-secao="metodo" data-lado="dir"><img src="astros/terra.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro marte" data-nome="Marte" data-fato="No centro aparece o Valles Marineris, um cânion de cerca de 4.000 km de comprimento." data-fonte="Mosaico das sondas Viking (NASA/USGS)" data-secao="o-que-automatizo" data-lado="esq"><img src="astros/marte.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro jupiter" data-nome="Júpiter" data-fato="O maior planeta. A Grande Mancha Vermelha é uma tempestade maior que a Terra." data-fonte="Foto do telescópio Hubble (NASA/ESA), 2014" data-secao="caso" data-lado="dir"><img src="astros/jupiter.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro saturno" data-nome="Saturno" data-fato="Os anéis têm cerca de 280 mil km de diâmetro, mas em muitos pontos só uns 10 metros de espessura." data-fonte="Foto da sonda Cassini (NASA/JPL/SSI), 2009" data-secao="calculadora" data-lado="esq"><img src="astros/saturno.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro urano" data-nome="Urano" data-fato="Gira &quot;deitado&quot;: o eixo é inclinado cerca de 98 graus." data-fonte="Foto da sonda Voyager 2 (NASA), 1986" data-secao="servicos" data-lado="dir"><img src="astros/urano.jpg" alt="" loading="lazy" decoding="async"></div><div class="planeta astro netuno" data-nome="Netuno" data-fato="Tem os ventos mais rápidos do sistema solar, acima de 2.000 km/h." data-fonte="Foto da sonda Voyager 2 (NASA), 1989" data-secao="perguntas" data-lado="esq"><img src="astros/netuno.jpg" alt="" loading="lazy" decoding="async"></div></div>
+<div class="dica-astro" id="dica-astro" role="tooltip" hidden><b></b><span></span><small></small></div>
 <header class="top">
   <div class="wrap">
     <a class="marca" href="#inicio">Derlin Siqueira<small>IA no time comercial</small></a>
@@ -696,6 +709,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </footer>
 
 <script>
+(function(){
+  var d=document.getElementById('dica-astro'); if(!d) return;
+  function pos(e){var w=d.offsetWidth,h=d.offsetHeight,x=e.clientX+16,y=e.clientY+16;
+    if(x+w>innerWidth-12)x=e.clientX-w-16; if(y+h>innerHeight-12)y=e.clientY-h-16; d.style.left=Math.max(8,x)+'px'; d.style.top=Math.max(8,y)+'px';}
+  document.querySelectorAll('.astro').forEach(function(a){
+    a.addEventListener('mouseenter',function(e){d.children[0].textContent=a.dataset.nome;d.children[1].textContent=a.dataset.fato;d.children[2].textContent=a.dataset.fonte;d.hidden=false;pos(e);});
+    a.addEventListener('mousemove',pos);
+    a.addEventListener('mouseleave',function(){d.hidden=true;});
+  });
+})();
+
 (function(){
   var cos=document.getElementById('cosmos'); if(!cos) return;
   var ps=[].slice.call(cos.querySelectorAll('.planeta')), quieto=false;
