@@ -334,6 +334,31 @@ footer{border-top-color:var(--line)}
 .label{color:var(--blue)}
 .label b{color:var(--ocre)}
 @media (max-width:860px){.retrato img{border-radius:20px}}
+/* ===== sistema solar ao fundo ===== */
+body{position:relative}
+.cosmos{position:absolute;left:0;top:0;width:100%;height:100vh;overflow:hidden;z-index:0;pointer-events:none}
+.sol{position:absolute;top:-330px;right:-170px;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle at 45% 55%,#FFF4C8 0%,#FFD36B 22%,#F2A23A 48%,#C7621E 70%,rgba(199,98,30,0) 72%);
+  box-shadow:0 0 120px 40px rgba(255,170,60,.28),0 0 260px 120px rgba(255,140,40,.12);opacity:.55;filter:saturate(1.05)}
+.sol::after{content:"";position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,90,.18),transparent 65%)}
+.planeta{position:absolute;opacity:.62;will-change:transform}
+.planeta i{display:block;width:100%;height:100%;border-radius:50%;position:relative;
+  box-shadow:inset -18px -14px 30px rgba(0,0,0,.55),0 0 40px rgba(110,168,255,.12)}
+.planeta i::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.35),transparent 38%)}
+.mercurio{width:56px;height:56px}.mercurio i{background:radial-gradient(circle at 60% 60%,#7E7A75,#A9A49D 45%,#5E5A55)}
+.venus{width:86px;height:86px}.venus i{background:radial-gradient(circle at 40% 40%,#F4DDA8,#D9B46E 55%,#A9813F)}
+.terra{width:96px;height:96px}.terra i{background:radial-gradient(circle at 62% 38%,#4FA35A 0 12%,transparent 13%),radial-gradient(circle at 35% 62%,#5DAF5F 0 10%,transparent 11%),radial-gradient(circle at 45% 45%,#7CC3FF,#2E6FD1 55%,#163E86)}
+.marte{width:72px;height:72px}.marte i{background:radial-gradient(circle at 45% 40%,#F08A55,#C9542C 55%,#7E2E17)}
+.jupiter{width:230px;height:230px}.jupiter i{background:radial-gradient(circle at 64% 66%,#C0643E 0 7%,transparent 8%),repeating-linear-gradient(172deg,#E3C9A3 0 14px,#C79C6E 14px 26px,#EAD7B8 26px 38px,#B98A5E 38px 46px)}
+.saturno{width:170px;height:170px}.saturno i{background:repeating-linear-gradient(170deg,#E9D6A6 0 12px,#D3B57C 12px 22px,#F0E1BB 22px 30px)}
+.saturno::before{content:"";position:absolute;left:-55%;right:-55%;top:38%;height:24%;border-radius:50%;border:7px solid rgba(232,210,160,.55);box-shadow:0 0 0 5px rgba(232,210,160,.18);transform:rotate(-14deg);z-index:1}
+.urano{width:118px;height:118px}.urano i{background:radial-gradient(circle at 45% 40%,#C8F3F2,#86D7DA 55%,#3E9AA3)}
+.netuno{width:112px;height:112px}.netuno i{background:radial-gradient(circle at 45% 40%,#8DB1FF,#3F6FE0 55%,#1C3A8E)}
+@keyframes flutua{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.planeta{animation:flutua 9s ease-in-out infinite}
+.planeta:nth-child(odd){animation-duration:11s}
+@media (max-width:760px){.planeta{opacity:.42;scale:.65}.sol{width:420px;height:420px;top:-250px;right:-160px;opacity:.45}}
+@media (prefers-reduced-motion:reduce){.planeta{animation:none}}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -342,6 +367,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 
 <canvas id="ceu" aria-hidden="true"></canvas>
+<div class="cosmos" id="cosmos" aria-hidden="true"><div class="sol"></div><div class="planeta mercurio" data-secao="para-quem" data-lado="dir"><i></i></div><div class="planeta venus" data-secao="problema" data-lado="esq"><i></i></div><div class="planeta terra" data-secao="metodo" data-lado="dir"><i></i></div><div class="planeta marte" data-secao="o-que-automatizo" data-lado="esq"><i></i></div><div class="planeta jupiter" data-secao="caso" data-lado="dir"><i></i></div><div class="planeta saturno" data-secao="calculadora" data-lado="esq"><i></i></div><div class="planeta urano" data-secao="servicos" data-lado="dir"><i></i></div><div class="planeta netuno" data-secao="perguntas" data-lado="esq"><i></i></div></div>
 <header class="top">
   <div class="wrap">
     <a class="marca" href="#inicio">Derlin Siqueira<small>IA no time comercial</small></a>
@@ -679,6 +705,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </footer>
 
 <script>
+(function(){
+  var cos=document.getElementById('cosmos'); if(!cos) return;
+  var ps=[].slice.call(cos.querySelectorAll('.planeta')), quieto=false;
+  try{quieto=window.matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){}
+  var base=[];
+  function arruma(){
+    cos.style.height=document.documentElement.scrollHeight+'px';
+    var larg=document.documentElement.clientWidth, col=Math.min(1120,larg-32), margem=(larg-col)/2;
+    base=ps.map(function(p){
+      var s=document.getElementById(p.dataset.secao); if(!s) return null;
+      var r=s.getBoundingClientRect(), topo=r.top+window.scrollY+Math.min(140,r.height*.25);
+      var w=p.offsetWidth, fora=w*.45;
+      p.style.top=topo+'px';
+      if(p.dataset.lado==='esq'){p.style.left=Math.max(margem-24-w,-w*.65)+'px';p.style.right='auto';}
+      else{p.style.right=Math.max(margem-24-w,-w*.65)+'px';p.style.left='auto';}
+      return topo;
+    });
+    move();
+  }
+  function move(){
+    if(quieto) return;
+    var y=window.scrollY, h=window.innerHeight;
+    ps.forEach(function(p,i){ if(base[i]==null) return; var d=(y+h/2-base[i])*-0.12; p.style.transform='translateY('+d.toFixed(1)+'px)'; });
+  }
+  var pend=false;
+  window.addEventListener('scroll',function(){ if(pend) return; pend=true; requestAnimationFrame(function(){pend=false;move();}); },{passive:true});
+  window.addEventListener('resize',arruma);
+  window.addEventListener('load',arruma);
+  var det=document.getElementById('sobre-det'); if(det) det.addEventListener('toggle',arruma);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(arruma);
+  arruma();
+})();
+
 (function(){
   var bts=document.querySelectorAll('.secoes .grupo');
   function fecha(){bts.forEach(function(b){b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});}
