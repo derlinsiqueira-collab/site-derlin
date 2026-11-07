@@ -425,6 +425,29 @@ body{position:relative}
 .retrato-sobre figure{max-width:340px}
 @media (max-width:1080px){.traj-foto{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.traj-foto .marcos{grid-column:1/-1}}
 @media (max-width:860px){.traj-foto{grid-template-columns:1fr}.retrato-sobre figure{max-width:300px;margin-inline:auto}}
+/* simulação nova */
+.estrutura{display:flex;flex-direction:column;gap:8px}
+.linha-tit{font-size:.92rem;color:var(--text)}
+.alterna-calc{align-self:flex-start;flex-wrap:wrap}
+.alterna-calc button{display:inline-flex;align-items:center;gap:6px}
+.calc .linha>span:first-child{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.info{position:relative;display:inline-grid;place-items:center;width:17px;height:17px;border-radius:50%;border:1px solid currentColor;font-size:.7rem;font-weight:700;opacity:.8;cursor:help;flex:none}
+.info::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:240px;padding:10px 12px;border-radius:12px;background:rgba(8,16,38,.96);border:1px solid rgba(160,190,255,.3);color:var(--text);font-size:.8rem;font-weight:400;line-height:1.45;text-align:left;white-space:normal;box-shadow:0 14px 30px -10px rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .15s;z-index:30}
+.info:hover::after,.info:focus::after{opacity:1}
+.info:focus{outline:2px solid var(--ocre);outline-offset:2px}
+.premissas{font-size:.84rem;color:var(--muted)}
+.premissas summary{cursor:pointer;color:var(--blue);font-weight:600}
+.premissas table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.8rem}
+.premissas th,.premissas td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line)}
+.premissas th{color:var(--text);font-weight:600}
+.premissas p{margin-top:8px}
+.calc .res small{font-size:.8rem;color:var(--text)}
+.ganhos{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+.ganhos-tit{font-size:.8rem;font-weight:600;color:var(--ocre)}
+.ganhos ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.88rem;color:var(--text)}
+.calc .res .ganhos b{color:var(--ink);font-size:inherit;letter-spacing:0;line-height:inherit;font-weight:700;display:inline}
+.calc .res .ganhos li{display:list-item}
+label[hidden]{display:none}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -600,31 +623,48 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <div class="wrap">
       <div class="sec-head">
         <span class="label"><b>06</b> · Simulação</span>
-        <h2>Quanto tempo o seu time pode ganhar?</h2>
-        <p>Mexa nos números do seu time. É uma estimativa; o diagnóstico mede o valor real.</p>
+        <h2>Quanto tempo e dinheiro o seu time pode ganhar?</h2>
+        <p>Monte o seu time, escolha o que a IA assume e veja o retorno em horas, dinheiro e velocidade.</p>
       </div>
       <div class="calc">
-        <form id="calc-form" onsubmit="return false">
-          <label for="c-vend"><span class="linha">Vendedores no time <output id="o-vend">5</output></span><input type="range" id="c-vend" min="1" max="30" value="5"></label>
-          <fieldset class="topicos"><legend><span class="linha">O que a IA vai assumir <output id="o-horas">7,5 h por vendedor/semana</output></span></legend>
-            <div class="chips">
-              <button type="button" class="topico" aria-pressed="true" data-h="2">Pesquisa e listas</button>
-              <button type="button" class="topico" aria-pressed="true" data-h="2">Registro no CRM</button>
-              <button type="button" class="topico" aria-pressed="true" data-h="2">Follow-up</button>
-              <button type="button" class="topico" aria-pressed="true" data-h="1.5">Preparação de reunião</button>
-              <button type="button" class="topico" aria-pressed="false" data-h="1">Proposta e contrato</button>
-              <button type="button" class="topico" aria-pressed="false" data-h="1">Relatórios do funil</button>
+<form id="calc-form" onsubmit="return false">
+          <div class="estrutura">
+            <span class="linha-tit">Como o seu time é montado?</span>
+            <div class="alterna alterna-calc" role="group" aria-label="Estrutura do time">
+              <button type="button" data-modo="duo" aria-pressed="true">SDR + closer <span class="info" tabindex="0" role="note" aria-label="SDR: pré-vendedor. Pesquisa, aborda e qualifica os leads e agenda a reunião para o closer. Closer: o vendedor que conduz a reunião, negocia e fecha o contrato." data-tip="SDR: pré-vendedor. Pesquisa, aborda e qualifica os leads e agenda a reunião para o closer. Closer: o vendedor que conduz a reunião, negocia e fecha o contrato.">?</span></button>
+              <button type="button" data-modo="solo" aria-pressed="false">Um vendedor faz tudo <span class="info" tabindex="0" role="note" aria-label="Vendedor completo: a mesma pessoa prospecta, faz a reunião e fecha. Comum em times pequenos." data-tip="Vendedor completo: a mesma pessoa prospecta, faz a reunião e fecha. Comum em times pequenos.">?</span></button>
             </div>
-            <span class="dica">Horas típicas por vendedor por semana em cada tarefa. O diagnóstico mede as suas.</span>
+          </div>
+          <label for="c-clo"><span class="linha"><span><span class="nome-clo">Closers</span> no time <span class="info" tabindex="0" role="note" aria-label="Closer: o vendedor que conduz a reunião, negocia e fecha o contrato." data-tip="Closer: o vendedor que conduz a reunião, negocia e fecha o contrato.">?</span></span><output id="o-clo">3</output></span><input type="range" id="c-clo" min="1" max="20" value="3"></label>
+          <label for="c-sdr" class="so-duo"><span class="linha"><span>SDRs no time <span class="info" tabindex="0" role="note" aria-label="SDR: pré-vendedor. Pesquisa, aborda e qualifica os leads e agenda a reunião para o closer." data-tip="SDR: pré-vendedor. Pesquisa, aborda e qualifica os leads e agenda a reunião para o closer.">?</span></span><output id="o-sdr">2</output></span><input type="range" id="c-sdr" min="1" max="20" value="2"></label>
+          <label for="c-leads"><span class="linha"><span>Leads que cada <span class="nome-lead">SDR</span> trabalha por semana</span><output id="o-leads">50</output></span><input type="range" id="c-leads" min="30" max="150" step="10" value="50"></label>
+          <label for="c-neg"><span class="linha"><span>Negociações por <span class="nome-clo-s">closer</span> por semana</span><output id="o-neg">10</output></span><input type="range" id="c-neg" min="5" max="25" value="10"></label>
+          <label for="c-csdr" class="so-duo"><span class="linha"><span>Custo da hora do SDR</span><output id="o-csdr">R$ 40</output></span><input type="range" id="c-csdr" min="20" max="150" step="5" value="40"></label>
+          <label for="c-cclo"><span class="linha"><span>Custo da hora do <span class="nome-clo-s">closer</span></span><output id="o-cclo">R$ 80</output></span><input type="range" id="c-cclo" min="30" max="300" step="5" value="80"></label>
+          <fieldset class="topicos"><legend><span class="linha">O que a IA vai assumir</span></legend>
+            <div class="chips">
+              <button type="button" class="topico" aria-pressed="true" data-id="pesq">Pesquisa e listas</button>
+              <button type="button" class="topico" aria-pressed="true" data-id="cad">Cadência de abordagem</button>
+              <button type="button" class="topico" aria-pressed="true" data-id="fup">Follow-up</button>
+              <button type="button" class="topico" aria-pressed="true" data-id="prep">Preparação de reunião</button>
+              <button type="button" class="topico" aria-pressed="true" data-id="crm">Registro no CRM</button>
+              <button type="button" class="topico" aria-pressed="false" data-id="prop">Proposta e contrato</button>
+              <button type="button" class="topico" aria-pressed="false" data-id="rel">Relatórios do funil</button>
+            </div>
           </fieldset>
-          <label for="c-custo"><span class="linha">Custo da hora do vendedor <output id="o-custo">R$ 60</output></span><input type="range" id="c-custo" min="20" max="250" step="5" value="60"></label>
-          <label for="c-pct"><span class="linha">Parte que a IA assume <output id="o-pct">50%</output></span><input type="range" id="c-pct" min="10" max="80" step="5" value="50"></label>
+          <details class="premissas"><summary>Ver as premissas de tempo</summary>
+            <table><thead><tr><th>Tarefa</th><th>Sem IA</th><th>Com IA</th><th>Unidade</th></tr></thead><tbody>
+            <tr><td>Pesquisa e listas</td><td>10 min</td><td>2 min</td><td>por lead</td></tr><tr><td>Cadência de abordagem</td><td>6 min</td><td>1 min</td><td>por lead</td></tr><tr><td>Follow-up</td><td>15 min</td><td>3 min</td><td>por negociação</td></tr><tr><td>Preparação de reunião</td><td>45 min</td><td>10 min</td><td>por negociação</td></tr><tr><td>Registro no CRM</td><td>20 min</td><td>2 min</td><td>por negociação</td></tr><tr><td>Proposta e contrato</td><td>90 min</td><td>30 min</td><td>por negociação</td></tr><tr><td>Relatórios do funil</td><td>120 min</td><td>15 min</td><td>por pessoa, por semana</td></tr>
+            </tbody></table>
+            <p>Tempos médios da minha operação. Cada caso é medido no diagnóstico.</p>
+          </details>
         </form>
         <div class="res" aria-live="polite">
-          <div><b id="r-horas">86 h</b><span>devolvidas ao time por mês</span></div>
-          <div><b id="r-valor">R$ 5.160</b><span>em tempo de vendedor por mês</span></div>
-          <div><b id="r-fte">0,5</b><span>vendedor em tempo integral liberado para vender</span></div>
-          <p class="aviso-calc">Conta: vendedores × horas das tarefas escolhidas × 4,3 semanas × parte da IA. Os valores iniciais são um exemplo, não promessa de resultado.</p>
+          <div><b id="r-horas">0 h</b><span>devolvidas ao time por mês</span><small id="r-horas-det"></small></div>
+          <div><b id="r-valor">R$ 0</b><span>economizados por mês na área de vendas</span><small id="r-ano"></small></div>
+          <div><b id="r-fte">0</b><span id="r-fte-t">pessoas em tempo integral liberadas para vender</span></div>
+          <div class="ganhos"><span class="ganhos-tit">Ganhos de processo</span><ul id="r-ganhos"></ul></div>
+          <p class="aviso-calc">Estimativa feita com os tempos médios da minha operação. Cada caso é diferente e é medido no diagnóstico; não é promessa de resultado.</p>
         </div>
       </div>
     </div>
@@ -931,18 +971,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 (function(){
   var f=function(id){return document.getElementById(id)};
+  var T={"pesq":{"u":"lead","m":10,"ia":2},"cad":{"u":"lead","m":6,"ia":1},"fup":{"u":"neg","m":15,"ia":3},"prep":{"u":"neg","m":45,"ia":10},"crm":{"u":"neg","m":20,"ia":2},"prop":{"u":"neg","m":90,"ia":30},"rel":{"u":"sem","m":120,"ia":15}};
   var nf=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}), n1=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1,minimumFractionDigits:1});
+  var modo='duo', BASE_LEAD=8;
+  function on(id){var b=document.querySelector('.topico[data-id="'+id+'"]');return b&&b.getAttribute('aria-pressed')==='true';}
   function calc(){
-    var v=+f('c-vend').value,c=+f('c-custo').value,p=+f('c-pct').value/100,h=0;
-    document.querySelectorAll('.topico[aria-pressed="true"]').forEach(function(b){h+=+b.dataset.h});
-    f('o-vend').textContent=v; f('o-horas').textContent=n1.format(h).replace(',0','')+' h por vendedor/semana'; f('o-custo').textContent='R$ '+c; f('o-pct').textContent=Math.round(p*100)+'%';
-    var horas=v*h*4.3*p;
-    f('r-horas').textContent=nf.format(horas)+' h';
-    f('r-valor').textContent='R$ '+nf.format(horas*c);
-    f('r-fte').textContent=n1.format(horas/(40*4.3));
+    var solo=modo==='solo';
+    var C=+f('c-clo').value,S=solo?0:+f('c-sdr').value,L=+f('c-leads').value,N=+f('c-neg').value,cs=+f('c-csdr').value,cc=+f('c-cclo').value;
+    f('o-clo').textContent=C; f('o-sdr').textContent=S; f('o-leads').textContent=L; f('o-neg').textContent=N; f('o-csdr').textContent='R$ '+cs; f('o-cclo').textContent='R$ '+cc;
+    var lm=0,li=0,nm=0,ni=0,rm=0,ri=0;
+    Object.keys(T).forEach(function(k){var x=T[k];if(!on(k))return;if(x.u==='lead'){lm+=x.m;li+=x.ia}else if(x.u==='neg'){nm+=x.m;ni+=x.ia}else{rm+=x.m;ri+=x.ia}});
+    var hLeadSem=(lm-li)*L/60, hNegSem=((nm-ni)*N+(rm-ri))/60;
+    var hS=solo?0:S*hLeadSem*4.3, hC=C*(hNegSem+(solo?hLeadSem:0))*4.3, hT=hS+hC;
+    var r$=hS*cs+hC*cc;
+    f('r-horas').textContent=nf.format(hT)+' h';
+    f('r-horas-det').textContent=solo?(nf.format(hC)+' h dos vendedores'):(nf.format(hS)+' h dos SDRs · '+nf.format(hC)+' h dos closers');
+    f('r-valor').textContent='R$ '+nf.format(r$);
+    f('r-ano').textContent='R$ '+nf.format(r$*12)+' por ano';
+    var fte=hT/(40*4.3); f('r-fte').textContent=n1.format(fte);
+    var g=[];
+    if(lm>0) g.push('<b>'+n1.format((BASE_LEAD+lm)/(BASE_LEAD+li))+'x</b> mais leads por '+(solo?'vendedor':'SDR')+' no mesmo tempo');
+    if(nm>0) g.push('Rotina por negociação cai de <b>'+nf.format(nm)+' min</b> para <b>'+nf.format(ni)+' min</b>');
+    g.push('Ciclo até a proposta: de <b>≈15</b> para <b>≈4 dias úteis</b>');
+    g.push('Resposta ao lead no mesmo dia, sem follow-up esquecido');
+    f('r-ganhos').innerHTML=g.map(function(x){return '<li>'+x+'</li>'}).join('');
   }
-  ['c-vend','c-custo','c-pct'].forEach(function(id){f(id).addEventListener('input',calc)});
+  function aplicaModo(m){
+    modo=m; var solo=m==='solo';
+    document.querySelectorAll('.alterna-calc button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.modo===m?'true':'false')});
+    document.querySelectorAll('.so-duo').forEach(function(e){e.hidden=solo});
+    document.querySelectorAll('.nome-clo').forEach(function(e){e.textContent=solo?'Vendedores':'Closers'});
+    document.querySelectorAll('.nome-clo-s').forEach(function(e){e.textContent=solo?'vendedor':'closer'});
+    document.querySelectorAll('.nome-lead').forEach(function(e){e.textContent=solo?'vendedor':'SDR'});
+    calc();
+  }
+  ['c-clo','c-sdr','c-leads','c-neg','c-csdr','c-cclo'].forEach(function(id){f(id).addEventListener('input',calc)});
   document.querySelectorAll('.topico').forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');calc()})});
+  document.querySelectorAll('.alterna-calc button').forEach(function(b){b.addEventListener('click',function(e){if(e.target.classList.contains('info'))return;aplicaModo(b.dataset.modo)})});
   calc();
 })();
 
