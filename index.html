@@ -492,6 +492,9 @@ label[hidden]{display:none}
 .valores span{font-size:.9rem}
 @media (max-width:980px){.valores{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:860px){.marca-grade,.mvv{grid-template-columns:1fr}.valores{grid-template-columns:1fr}}
+.marca-grande{display:flex;align-items:center;gap:clamp(12px,2vw,22px);margin-bottom:28px;color:var(--ink)}
+.marca-grande span{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.3em;font-size:clamp(2.2rem,7vw,5.2rem);line-height:1}
+.marca-grande-ico{width:clamp(44px,7vw,84px);height:auto;flex:none}
 footer{padding-block:28px 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -616,50 +619,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section id="marca" class="marca-sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="label">Por que Karmana</span>
-        <h2>Um nome, três ideias. Todas sobre ação.</h2>
-        <p>Pronuncia-se <b>kar-MA-na</b>, com a força no “MA”, como em “semana”.</p>
-      </div>
-      <div class="marca-grade">
-        <div class="marca-ideias">
-          <div><b>Kármán</b><span>A linha de Kármán fica a 100 km de altura. É onde o foguete deixa o chão e entra no espaço. É o ponto que a sua empresa precisa cruzar: sair da gravidade do operacional.</span></div>
-          <div><b>Karma</b><span>O que você faz, volta. Trabalho bem feito vira confiança, indicação e cliente que fica. Vale para a sua empresa e vale para a Karmana.</span></div>
-          <div><b>Karmanā</b><span>Em sânscrito, “através da ação”, “por meio do trabalho”. Na tradição indiana, ela fecha a tríade pensamento, palavra e ação: o que se pensa, se diz e se faz andam juntos.</span></div>
-        </div>
-        <div class="karman-box"><svg class="karman-svg" viewBox="0 0 560 260" role="img" aria-labelledby="km-t"><title id="km-t">Um foguete cruzando a linha de Kármán, a 100 km de altura, onde começa o espaço</title>
-<defs><linearGradient id="km-chama" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C46A"/><stop offset="1" stop-color="#E9805A" stop-opacity="0"/></linearGradient>
-<linearGradient id="km-ceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EA8FF" stop-opacity=".18"/><stop offset="1" stop-color="#6EA8FF" stop-opacity="0"/></linearGradient></defs>
-<rect x="0" y="0" width="560" height="120" fill="url(#km-ceu)"/>
-<line x1="0" y1="120" x2="560" y2="120" stroke="#6EA8FF" stroke-width="1.5" stroke-dasharray="6 6"/>
-<text x="16" y="108" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#AFC8F5">Linha de Kármán · 100 km</text>
-<text x="16" y="142" font-family="Inter, sans-serif" font-size="12" fill="#8C9BB8">abaixo: o operacional, a gravidade do dia a dia</text>
-<text x="16" y="30" font-family="Inter, sans-serif" font-size="12" fill="#8C9BB8">acima: a operação rodando sozinha</text>
-<path d="M60 250 C 200 240, 300 190, 380 70" stroke="#8C9BB8" stroke-width="1.2" stroke-dasharray="2 5" fill="none"/>
-<g transform="translate(392 52) rotate(32) scale(2.1) translate(-16 -16)">
-<path d="M16 2.5c4.2 3.6 5.8 8.3 5.8 13.6v5.4H10.2v-5.4c0-5.3 1.6-10 5.8-13.6z" stroke="#EAF1FF" stroke-width="1.5" stroke-linejoin="round" fill="#0B1020"/>
-<circle cx="16" cy="12.2" r="2.2" fill="#6EA8FF"/>
-<path d="M10.2 16.8 6.8 20.6v3.1h3.4M21.8 16.8l3.4 3.8v3.1h-3.4" stroke="#EAF1FF" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
-<path d="M13.1 23.6c0 2.8 1.3 5.2 2.9 6.9 1.6-1.7 2.9-4.1 2.9-6.9z" fill="url(#km-chama)"/></g>
-</svg></div>
-      </div>
-
-      <div class="mvv">
-        <div class="mv"><span class="label">Missão</span><p>Colocar a IA para trabalhar dentro das empresas, através da ação: do diagnóstico à operação rodando sozinha, com o time no comando.</p></div>
-        <div class="mv"><span class="label">Visão</span><p>Ser a referência no Brasil em levar empresas do operacional à órbita com IA, com método, resultado medido e gente no centro.</p></div>
-      </div>
-      <span class="label" style="display:block;margin:34px 0 16px">Valores</span>
-      <div class="valores">
-        <div><b>Ação antes de promessa</b><span>Implantar, não só recomendar. Karmanā: através da ação.</span></div>
-        <div><b>O que se faz, volta</b><span>Cada entrega é feita para gerar confiança e indicação.</span></div>
-        <div><b>Pensar, falar e fazer juntos</b><span>O que se promete no diagnóstico é o que se entrega na órbita.</span></div>
-        <div><b>Medir antes de decolar</b><span>Telemetria sempre: números de antes e depois, sem achismo.</span></div>
-        <div><b>Gente no comando</b><span>A IA executa. A tripulação decide o que importa.</span></div>
-      </div>
-    </div>
-  </section>
 
   <section id="o-que-automatizo">
     <div class="wrap">
@@ -979,6 +938,51 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <div class="canal"><span class="label">E-mail</span><span class="v" id="c-email">derlinsiq@gmail.com</span><button class="copiar" type="button" data-alvo="c-email">copiar</button></div>
           <div class="canal"><span class="label">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/derlinsiqueira/" target="_blank" rel="noopener">linkedin.com/in/derlinsiqueira</a></div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section id="marca" class="marca-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="marca-grande"><svg class="marca-grande-ico" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="chama-grande" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C46A"/><stop offset="1" stop-color="#E9805A" stop-opacity="0"/></linearGradient></defs><g transform="translate(16 16) scale(.8) rotate(40) translate(-16 -15)"><path d="M16 2.5c4.2 3.6 5.8 8.3 5.8 13.6v5.4H10.2v-5.4c0-5.3 1.6-10 5.8-13.6z" stroke="#EAF1FF" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="12.2" r="2.2" fill="#6EA8FF"/><path d="M10.2 16.8 6.8 20.6v3.1h3.4M21.8 16.8l3.4 3.8v3.1h-3.4" stroke="#EAF1FF" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><path d="M13.1 23.6c0 2.8 1.3 5.2 2.9 6.9 1.6-1.7 2.9-4.1 2.9-6.9z" fill="url(#chama-grande)"/></g></svg><span>Karmana</span></div>
+        <span class="label">Por que Karmana</span>
+        <h2>Um nome, três ideias. Todas sobre ação.</h2>
+        <p>Pronuncia-se <b>kar-MA-na</b>, com a força no “MA”, como em “semana”.</p>
+      </div>
+      <div class="marca-grade">
+        <div class="marca-ideias">
+          <div><b>Kármán</b><span>A linha de Kármán fica a 100 km de altura. É onde o foguete deixa o chão e entra no espaço. É o ponto que a sua empresa precisa cruzar: sair da gravidade do operacional.</span></div>
+          <div><b>Karma</b><span>O que você faz, volta. Trabalho bem feito vira confiança, indicação e cliente que fica. Vale para a sua empresa e vale para a Karmana.</span></div>
+          <div><b>Karmanā</b><span>Em sânscrito, “através da ação”, “por meio do trabalho”. Na tradição indiana, ela fecha a tríade pensamento, palavra e ação: o que se pensa, se diz e se faz andam juntos.</span></div>
+        </div>
+        <div class="karman-box"><svg class="karman-svg" viewBox="0 0 560 260" role="img" aria-labelledby="km-t"><title id="km-t">Um foguete cruzando a linha de Kármán, a 100 km de altura, onde começa o espaço</title>
+<defs><linearGradient id="km-chama" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C46A"/><stop offset="1" stop-color="#E9805A" stop-opacity="0"/></linearGradient>
+<linearGradient id="km-ceu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6EA8FF" stop-opacity=".18"/><stop offset="1" stop-color="#6EA8FF" stop-opacity="0"/></linearGradient></defs>
+<rect x="0" y="0" width="560" height="120" fill="url(#km-ceu)"/>
+<line x1="0" y1="120" x2="560" y2="120" stroke="#6EA8FF" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="16" y="108" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#AFC8F5">Linha de Kármán · 100 km</text>
+<text x="16" y="142" font-family="Inter, sans-serif" font-size="12" fill="#8C9BB8">abaixo: o operacional, a gravidade do dia a dia</text>
+<text x="16" y="30" font-family="Inter, sans-serif" font-size="12" fill="#8C9BB8">acima: a operação rodando sozinha</text>
+<path d="M60 250 C 200 240, 300 190, 380 70" stroke="#8C9BB8" stroke-width="1.2" stroke-dasharray="2 5" fill="none"/>
+<g transform="translate(392 52) rotate(32) scale(2.1) translate(-16 -16)">
+<path d="M16 2.5c4.2 3.6 5.8 8.3 5.8 13.6v5.4H10.2v-5.4c0-5.3 1.6-10 5.8-13.6z" stroke="#EAF1FF" stroke-width="1.5" stroke-linejoin="round" fill="#0B1020"/>
+<circle cx="16" cy="12.2" r="2.2" fill="#6EA8FF"/>
+<path d="M10.2 16.8 6.8 20.6v3.1h3.4M21.8 16.8l3.4 3.8v3.1h-3.4" stroke="#EAF1FF" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+<path d="M13.1 23.6c0 2.8 1.3 5.2 2.9 6.9 1.6-1.7 2.9-4.1 2.9-6.9z" fill="url(#km-chama)"/></g>
+</svg></div>
+      </div>
+
+      <div class="mvv">
+        <div class="mv"><span class="label">Missão</span><p>Colocar a IA para trabalhar dentro das empresas, através da ação: do diagnóstico à operação rodando sozinha, com o time no comando.</p></div>
+        <div class="mv"><span class="label">Visão</span><p>Ser a referência no Brasil em levar empresas do operacional à órbita com IA, com método, resultado medido e gente no centro.</p></div>
+      </div>
+      <span class="label" style="display:block;margin:34px 0 16px">Valores</span>
+      <div class="valores">
+        <div><b>Ação antes de promessa</b><span>Implantar, não só recomendar. Karmanā: através da ação.</span></div>
+        <div><b>O que se faz, volta</b><span>Cada entrega é feita para gerar confiança e indicação.</span></div>
+        <div><b>Pensar, falar e fazer juntos</b><span>O que se promete no diagnóstico é o que se entrega na órbita.</span></div>
+        <div><b>Medir antes de decolar</b><span>Telemetria sempre: números de antes e depois, sem achismo.</span></div>
+        <div><b>Gente no comando</b><span>A IA executa. A tripulação decide o que importa.</span></div>
       </div>
     </div>
   </section>
