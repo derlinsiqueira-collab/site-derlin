@@ -256,6 +256,8 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{ou
 .sobre-det>summary:hover .sobre-txt b{color:var(--blue)}
 .sobre-corpo{padding:8px 22px 26px;border-top:1px solid var(--line)}
 .sobre-corpo .traj{margin-top:20px}
+.palestras-dentro{margin-top:44px;padding-top:32px;border-top:1px solid var(--line)}
+.palestras-dentro>.wrap{padding:0;max-width:none}
 @media (max-width:520px){.sobre-mais::after{content:"+"}.sobre-det[open] .sobre-mais::after{content:"−"}.sobre-foto{width:44px;height:44px}}
 /* fileira de botões das seções */
 .secoes{position:sticky;top:calc(env(safe-area-inset-top,0px) + 61px);z-index:4;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -263,9 +265,18 @@ a:focus-visible,.btn:focus-visible,button:focus-visible,summary:focus-visible{ou
 .secoes .trilho::-webkit-scrollbar{display:none}
 .secoes a{flex:none;font-size:.84rem;font-weight:500;color:var(--ink);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sheet);white-space:nowrap}
 .secoes a:hover{border-color:var(--blue);color:var(--blue)}
+.secoes .grupo{flex:none;font:inherit;font-size:.84rem;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.secoes .grupo:hover{color:var(--ink);border-color:var(--blue)}
+.secoes .grupo[aria-expanded="true"]{border-color:var(--blue);color:var(--ink)}
+.secoes .seta{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.secoes .grupo[aria-expanded="true"] .seta{transform:rotate(-135deg) translateY(-1px)}
+.secoes .grupo.btn-quem{background:var(--blue);border-color:var(--blue);color:#06101F;font-weight:600}
+.secoes .sub{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 12px}
+.secoes .sub[hidden]{display:none}
+.secoes .sub a{background:var(--blue-soft);border-color:rgba(110,168,255,.35);color:var(--ink)}
 .secoes a.btn-quem{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .secoes a.btn-quem:hover{background:var(--blue);border-color:var(--blue);color:var(--paper)}
-section[id]{scroll-margin-top:130px}
+section[id],#palestras{scroll-margin-top:130px}
 @media (min-width:900px){.secoes .trilho{flex-wrap:wrap;overflow:visible}}
 /* ===== tema universo ===== */
 body{background:var(--space);background-image:radial-gradient(1100px 620px at 85% -8%,rgba(46,109,180,.38),transparent 62%),radial-gradient(900px 600px at -10% 35%,rgba(40,90,170,.22),transparent 60%),radial-gradient(800px 500px at 60% 110%,rgba(233,181,90,.07),transparent 60%);background-attachment:fixed;background-size:auto}
@@ -339,7 +350,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   </div>
 </header>
   <nav class="secoes" aria-label="Seções do site">
-    <div class="wrap"><div class="trilho"><a href="#para-quem">Para quem é</a><a href="#problema">Problema</a><a href="#metodo">Método</a><a href="#o-que-automatizo">O que automatizo</a><a href="#caso">Caso</a><a href="#calculadora">Simulação</a><a href="#servicos">Serviços</a><a href="#palestras">Palestras</a><a href="#sobre" class="btn-quem">Quem sou</a></div></div>
+    <div class="wrap"><div class="trilho"><button type="button" class="grupo" aria-expanded="false" aria-controls="g-quem">Para quem<span class="seta" aria-hidden="true"></span></button><button type="button" class="grupo" aria-expanded="false" aria-controls="g-como">Como trabalho<span class="seta" aria-hidden="true"></span></button><a href="#calculadora">Simulação</a><a href="#servicos">Serviços</a><button type="button" class="grupo btn-quem" aria-expanded="false" aria-controls="g-sou">Quem sou<span class="seta" aria-hidden="true"></span></button></div><div class="sub" id="g-quem" hidden><a href="#para-quem">Para quem é</a><a href="#problema">O problema</a></div><div class="sub" id="g-como" hidden><a href="#metodo">Método</a><a href="#o-que-automatizo">O que automatizo</a><a href="#caso">Caso real</a></div><div class="sub" id="g-sou" hidden><a href="#sobre">Minha jornada</a><a href="#palestras">Palestras</a></div></div>
   </nav>
 
 <main id="inicio">
@@ -574,28 +585,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
-  <section id="palestras" style="background:var(--sheet);border-block:1px solid var(--line)">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="label"><b>08</b> · Palestras</span>
-        <h2>Palestras com demonstração ao vivo.</h2>
-        <p>Nada de slide cheio de promessa. Eu mostro a IA rodando com dados de verdade, no palco.</p>
-      </div>
-      <div class="palestras">
-        <div class="palestra"><h3>IA sem dado é criatividade sem direção</h3><p>Como marcas e sellers usam IA conectada a dados de marketplace para decidir preço, sortimento e concorrência em minutos.</p><span class="publico">Para: e-commerce, marcas, varejo e indústria</span></div>
-        <div class="palestra"><h3>O vendedor que não digita mais</h3><p>Como montei uma operação comercial em que a IA prepara, registra e cobra, e o vendedor só conversa e fecha.</p><span class="publico">Para: líderes de vendas, RevOps e donos de empresa</span></div>
-        <div class="palestra"><h3>Da fábrica ao algoritmo</h3><p>17 anos entre chão de fábrica, M&amp;A e SaaS: o que muda e o que não muda quando a IA entra na empresa.</p><span class="publico">Para: MBAs, associações e eventos de gestão</span></div>
-      </div>
-      <p class="citacao">“Vender é gerar confiança, com método, preparo e propósito.”</p>
-    </div>
-  </section>
-
-
 
   <section id="sobre" class="sobre-sec">
     <div class="wrap">
       <details class="sobre-det" id="sobre-det">
-        <summary><span class="sobre-foto" aria-hidden="true"></span><span class="sobre-txt"><b>Conheça quem está por trás</b><span>17 anos entre a fábrica, o M&amp;A e o SaaS. Veja a jornada completa.</span></span><span class="sobre-mais" aria-hidden="true"></span></summary>
+        <summary><span class="sobre-foto" aria-hidden="true"></span><span class="sobre-txt"><b>Conheça quem está por trás</b><span>17 anos entre a fábrica, o M&amp;A e o SaaS. Jornada completa e palestras.</span></span><span class="sobre-mais" aria-hidden="true"></span></summary>
         <div class="sobre-corpo">
       <div class="traj">
         <div class="txt">
@@ -619,7 +613,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="desenho jornada-box" style="margin-top:36px"><svg class="jornada" viewBox="0 0 1200 300" role="img" aria-labelledby="jor-t"><title id="jor-t">Linha do tempo da carreira e dos estudos de Derlin Siqueira, de 2009 até hoje</title>
 <defs><marker id="seta2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="var(--muted)"/></marker></defs>
 <text x="40" y="16" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">FIG. 2 · CARREIRA EM COTA, COM OS ESTUDOS EM PARALELO</text><line x1="40" y1="52" x2="40" y2="112" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/><line x1="43" y1="74" x2="339.5" y2="74" stroke="var(--muted)" stroke-width="1" marker-start="url(#seta2)" marker-end="url(#seta2)"/><text x="42" y="46" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--ink)">Helsten</text><text x="42" y="62" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="var(--muted)"></text><rect x="40" y="100" width="302.5" height="16" rx="1.5" fill="var(--blue)"/><text x="44" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Planejamento de manutenção</text><line x1="351.9" y1="52" x2="351.9" y2="112" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/><line x1="354.9" y1="74" x2="614.5" y2="74" stroke="var(--muted)" stroke-width="1" marker-start="url(#seta2)" marker-end="url(#seta2)"/><text x="353.9" y="46" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--ink)">Tetralon</text><text x="353.9" y="62" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="var(--muted)"></text><rect x="351.9" y="100" width="265.6" height="16" rx="1.5" fill="var(--blue)"/><text x="355.9" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Engenharia de aplicação</text><line x1="672.5" y1="52" x2="672.5" y2="112" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/><line x1="675.5" y1="74" x2="955.5" y2="74" stroke="var(--muted)" stroke-width="1" marker-start="url(#seta2)" marker-end="url(#seta2)"/><text x="674.5" y="46" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--ink)">Pipeline Capital</text><text x="674.5" y="62" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="var(--muted)"></text><rect x="672.5" y="100" width="286.0" height="16" rx="1.5" fill="var(--blue)"/><text x="676.5" y="90" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Originação de M&A</text><rect x="623" y="100" width="27.5" height="16" rx="1.5" fill="var(--blue)"/><rect x="958.5" y="100" width="19.2" height="16" rx="1.5" fill="var(--blue)"/><rect x="986" y="100" width="35.7" height="16" rx="1.5" fill="var(--ocre)"/><text x="623" y="136" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">G4 · Imersão Prime</text><text x="953" y="136" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="end">3Capital</text><text x="984" y="46" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="var(--ink)">JoomPulse</text><text x="984" y="62" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Vendas Enterprise</text><line x1="986" y1="66" x2="986" y2="100" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/><text x="1027.7" y="113" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="var(--ocre)">hoje</text><text x="1196" y="113" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--blue)" text-anchor="end">Carreira</text><line x1="639.5" y1="152" x2="1021.7" y2="152" stroke="var(--blue)" stroke-width="3"/><text x="639.5" y="170" font-family="Inter, sans-serif" font-size="11.5" font-weight="400" fill="var(--muted)"><tspan font-weight="600" fill="var(--ink)">DS Advisory</tspan> · consultoria própria, em paralelo desde 2019</text><line x1="40" y1="198" x2="1030" y2="198" stroke="var(--line)" stroke-width="1"/><line x1="40" y1="194" x2="40" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="40" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2009</text><line x1="150" y1="194" x2="150" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="150" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2011</text><line x1="260" y1="194" x2="260" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="260" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2013</text><line x1="370" y1="194" x2="370" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="370" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2015</text><line x1="480" y1="194" x2="480" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="480" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2017</text><line x1="590" y1="194" x2="590" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="590" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2019</text><line x1="700" y1="194" x2="700" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="700" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2021</text><line x1="810" y1="194" x2="810" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="810" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2023</text><line x1="920" y1="194" x2="920" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="920" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2025</text><line x1="1030" y1="194" x2="1030" y2="202" stroke="var(--muted)" stroke-width="1"/><text x="1030" y="216" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)" text-anchor="middle">2027</text><rect x="40" y="236" width="104.5" height="12" rx="1.5" fill="var(--est)"/><text x="42" y="268" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">SENAI</text><text x="42" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Aprendizagem</text><rect x="150" y="236" width="159.5" height="12" rx="1.5" fill="var(--est)"/><text x="152" y="268" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">SENAI Roberto Simonsen</text><text x="152" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Técnico em mecânica</text><rect x="315" y="236" width="159.5" height="12" rx="1.5" fill="var(--est)"/><text x="317" y="268" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">São Judas</text><text x="317" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Engenharia mecânica</text><rect x="480" y="236" width="214.5" height="12" rx="1.5" fill="var(--est)"/><text x="482" y="268" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">Anhembi Morumbi</text><text x="482" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Publicidade</text><rect x="832" y="236" width="148.5" height="12" rx="1.5" fill="var(--est)"/><text x="834" y="268" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--ink)">USP/ESALQ</text><text x="834" y="284" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">MBA Gestão, TCC em CS</text><rect x="953" y="252" width="55.0" height="8" rx="1.5" fill="var(--est)"/><text x="1014" y="260" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="var(--muted)">Trevisan · MBA PE, VC e M&amp;A</text><text x="1196" y="232" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="var(--blue)" text-anchor="end">Estudos</text></svg></div>
-</div>
+  <div id="palestras" class="palestras-dentro">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Palestras</span>
+        <h2>Palestras com demonstração ao vivo.</h2>
+        <p>Nada de slide cheio de promessa. Eu mostro a IA rodando com dados de verdade, no palco.</p>
+      </div>
+      <div class="palestras">
+        <div class="palestra"><h3>IA sem dado é criatividade sem direção</h3><p>Como marcas e sellers usam IA conectada a dados de marketplace para decidir preço, sortimento e concorrência em minutos.</p><span class="publico">Para: e-commerce, marcas, varejo e indústria</span></div>
+        <div class="palestra"><h3>O vendedor que não digita mais</h3><p>Como montei uma operação comercial em que a IA prepara, registra e cobra, e o vendedor só conversa e fecha.</p><span class="publico">Para: líderes de vendas, RevOps e donos de empresa</span></div>
+        <div class="palestra"><h3>Da fábrica ao algoritmo</h3><p>17 anos entre chão de fábrica, M&amp;A e SaaS: o que muda e o que não muda quando a IA entra na empresa.</p><span class="publico">Para: MBAs, associações e eventos de gestão</span></div>
+      </div>
+      <p class="citacao">“Vender é gerar confiança, com método, preparo e propósito.”</p>
+    </div>
+  </div>
+        </div>
       </details>
     </div>
   </section>
@@ -627,7 +636,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <section id="perguntas" style="padding-top:24px">
     <div class="wrap">
       <div class="sec-head">
-        <span class="label"><b>09</b> · Perguntas frequentes</span>
+        <span class="label"><b>08</b> · Perguntas frequentes</span>
         <h2>Antes de começar.</h2>
       </div>
       <div class="faq">
@@ -644,7 +653,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <section id="conversa" style="background:var(--sheet);border-top:1px solid var(--line)">
     <div class="wrap">
       <div class="sec-head">
-        <span class="label"><b>10</b> · Contato</span>
+        <span class="label"><b>09</b> · Contato</span>
         <h2>Conversa grátis de 15 minutos.</h2>
         <p>Uma conversa rápida para olhar o seu funil. Você sai sabendo por onde a IA entra no seu time, mesmo que a gente não trabalhe junto.</p>
       </div>
@@ -670,6 +679,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </footer>
 
 <script>
+(function(){
+  var bts=document.querySelectorAll('.secoes .grupo');
+  function fecha(){bts.forEach(function(b){b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});}
+  bts.forEach(function(b){b.addEventListener('click',function(){var abrir=b.getAttribute('aria-expanded')!=='true';fecha();if(abrir){b.setAttribute('aria-expanded','true');document.getElementById(b.getAttribute('aria-controls')).hidden=false;}});});
+  document.querySelectorAll('.secoes .sub a').forEach(function(a){a.addEventListener('click',fecha)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')fecha()});
+})();
+
 (function(){
   var c=document.getElementById('ceu'); if(!c||!c.getContext) return;
   var x=c.getContext('2d'), W=0,H=0,dpr=Math.min(window.devicePixelRatio||1,2), est=[], cad=null, quieto=false;
@@ -700,8 +717,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 (function(){
   var det=document.getElementById('sobre-det');
-  function abrir(){ if(location.hash==='#sobre'&&det){det.open=true;} }
-  document.querySelectorAll('a[href="#sobre"]').forEach(function(a){a.addEventListener('click',function(){det.open=true;})});
+  function abrir(){ if((location.hash==='#sobre'||location.hash==='#palestras')&&det){det.open=true;} }
+  document.querySelectorAll('a[href="#sobre"],a[href="#palestras"]').forEach(function(a){a.addEventListener('click',function(){det.open=true;})});
   window.addEventListener('hashchange',abrir); abrir();
 })();
 
